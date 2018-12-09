@@ -10,6 +10,7 @@
     <Folder Include="Data\" />
     <Folder Include="Dtos\" />
     <Folder Include="Eiibox-SPA\src\app\_services\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 
   <ItemGroup>
