@@ -11,6 +11,7 @@
     <Folder Include="Dtos\" />
     <Folder Include="Eiibox-SPA\src\app\_services\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Eiibox-SPA\src\app\_guards\" />
   </ItemGroup>
 
   <ItemGroup>

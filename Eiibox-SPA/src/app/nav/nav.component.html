@@ -1,18 +1,18 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
 
     <div class="container">
-        <a class="navbar-brand" href="#">Eiibox</a>
+        <a class="navbar-brand" [routerLink]="['/home']">Eiibox</a>
 
 
         <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Maches </a>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/members']">Maches </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Lists</a>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/lists']">Lists</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Masseges</a>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link disabled" [routerLink]="['/messages']">Masseges</a>
             </li>
         </ul>
 
