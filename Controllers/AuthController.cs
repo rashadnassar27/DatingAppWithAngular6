@@ -66,7 +66,7 @@ namespace Eiibox.API.Controllers
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddHours(Convert.ToInt32(_config.GetSection("AppSettings:TokenExpires").Value)),
+                Expires = DateTime.Now.AddMinutes(Convert.ToInt32(_config.GetSection("AppSettings:TokenExpires").Value)),
                 SigningCredentials = creds
             };
 

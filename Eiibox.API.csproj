@@ -23,4 +23,7 @@
   <ItemGroup>
     <None Remove="Eiibox-SPA\src\app\value\value.component.css" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Data\UserSeedData.cs" />
+  </ItemGroup>
 </Project>
