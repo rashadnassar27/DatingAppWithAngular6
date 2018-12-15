@@ -12,6 +12,10 @@
     <Folder Include="Eiibox-SPA\src\app\_services\" />
     <Folder Include="Helpers\" />
     <Folder Include="Eiibox-SPA\src\app\_guards\" />
+    <Folder Include="Eiibox-SPA\src\app\_models\" />
+    <Folder Include="Eiibox-SPA\src\app\members\" />
+    <Folder Include="Eiibox-SPA\src\app\members\member-list\" />
+    <Folder Include="Eiibox-SPA\src\app\_resolvers\" />
   </ItemGroup>
 
   <ItemGroup>
