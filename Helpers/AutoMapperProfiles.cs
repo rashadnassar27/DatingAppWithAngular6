@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using AutoMapper;
+using Eiibox.API.Controllers;
 using Eiibox.API.Dtos;
 using Eiibox.API.Models;
 namespace Eiibox.API.Helpers
@@ -28,6 +29,8 @@ namespace Eiibox.API.Helpers
                 });
             CreateMap<Photo, PhotosForDetailedDto>();
             CreateMap<UserForUpdateDto, User>();
+            CreateMap<Photo, PhotoForReturnDto>();
+            CreateMap<PhotoForCreationDto, Photo>();
 
         }
 

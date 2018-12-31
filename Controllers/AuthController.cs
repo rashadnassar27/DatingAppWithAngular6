@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Eiibox.API.Data;
 using Eiibox.API.Dtos;
 using Eiibox.API.Models;
@@ -18,10 +19,12 @@ namespace Eiibox.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        private readonly IMapper _mapper;
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
-            _repo = repo;
+            _mapper = mapper;
             _config = config;
+            _repo = repo;
         }
 
         [HttpPost("register")]
@@ -45,8 +48,6 @@ namespace Eiibox.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
-            userForLoginDto.Username = userForLoginDto.Username.ToLower();
-
             var userFromRepo = await _repo.Login(userForLoginDto.Username, userForLoginDto.Password);
 
             if (userFromRepo == null)
@@ -66,7 +67,7 @@ namespace Eiibox.API.Controllers
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddMinutes(Convert.ToInt32(_config.GetSection("AppSettings:TokenExpires").Value)),
+                Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = creds
             };
 
@@ -74,9 +75,12 @@ namespace Eiibox.API.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
+            var user = _mapper.Map<UserForListDto>(userFromRepo);
+
             return Ok(new
             {
-                token = tokenHandler.WriteToken(token)
+                token = tokenHandler.WriteToken(token),
+                user
             });
         }
     }

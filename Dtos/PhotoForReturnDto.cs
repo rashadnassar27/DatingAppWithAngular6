@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Eiibox.API.Models
+namespace Eiibox.API.Controllers
 {
-    public class Photo
+    public class PhotoForReturnDto
     {
         public int Id { get; set; }
         public string Url { get; set; }
@@ -10,7 +10,5 @@ namespace Eiibox.API.Models
         public DateTime DateAdded { get; set; }
         public bool IsMain { get; set; }
         public string PublicId { get; set; }
-        public User User { get; set; }
-        public int UserId { get; set; }
     }
 }
