@@ -40,7 +40,6 @@ export class PhotoEditorComponent implements OnInit {
       autoUpload: false,
       maxFileSize: 10 * 1024 * 1024
     });
-    this.uploader.onAfterAddingFile = (file) => {file.withCredentials = false;};
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response) {
@@ -53,6 +52,11 @@ export class PhotoEditorComponent implements OnInit {
           isMain: res.isMain
         };
         this.photos.push(photo);
+        if (photo.isMain) {
+          this.authService.changeMemberPhoto(photo.url);
+          this.authService.currentUser.photoUrl = photo.url;
+          localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
+        }
       }
     };
   }

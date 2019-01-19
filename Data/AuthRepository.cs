@@ -7,14 +7,11 @@ namespace Eiibox.API.Data
 {
     public class AuthRepository : IAuthRepository
     {
-
         private readonly DataContext _context;
-
         public AuthRepository(DataContext context)
         {
             _context = context;
         }
-
         public async Task<User> Login(string username, string password)
         {
             var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(x => x.UserName == username);
@@ -45,10 +42,12 @@ namespace Eiibox.API.Data
         {
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
             await _context.Users.AddAsync(user);
+
             await _context.SaveChangesAsync();
 
             return user;
