@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Eiibox.API.Data;
 using Eiibox.API.Dtos;
+using Eiibox.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eiibox.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
